@@ -58,6 +58,16 @@
 
 {% block content %}
 
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div class="landing-flash">
+    {% for message in messages %}
+    <div class="auth-success">{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+
 <section class="hero">
     <div class="hero-badge"><span class="hero-badge-dot"></span>Free to use · No credit card needed</div>
     <h1 class="hero-title">
