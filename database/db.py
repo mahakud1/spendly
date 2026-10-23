@@ -53,6 +53,13 @@ def get_user_by_email(email):
         ).fetchone()
 
 
+def get_user_by_id(user_id):
+    with closing(get_db()) as conn:
+        return conn.execute(
+            "SELECT * FROM users WHERE id = ?", (user_id,)
+        ).fetchone()
+
+
 def create_user(name, email, password):
     try:
         with closing(get_db()) as conn:
